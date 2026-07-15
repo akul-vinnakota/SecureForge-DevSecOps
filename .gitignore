@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# SecureForge security exclusions
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+terraform.tfstate
+terraform.tfstate.*
+.terraform/
+tfplan
+reports/*.json
+reports/*.sarif
+reports/*.html
+.DS_Store
+.vscode/
