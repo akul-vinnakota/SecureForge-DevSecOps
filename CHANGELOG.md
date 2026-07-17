@@ -4,6 +4,12 @@ All significant changes to SecureForge will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- FastAPI application foundation
+- Root and health-check API endpoints
+- Automated pytest coverage for API endpoints
+
 ### Planned
 
 - FastAPI application foundation

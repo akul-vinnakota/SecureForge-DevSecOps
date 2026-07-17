@@ -1,1 +1,2 @@
-# Production dependencies will be added during Day 2.
+fastapi
+uvicorn[standard]
