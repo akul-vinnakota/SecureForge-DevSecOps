@@ -120,3 +120,36 @@ This project is intended exclusively for defensive cybersecurity education, cont
 ## License
 
 This project is licensed under the MIT License.
+
+## Running the Application
+
+Install the project dependencies:
+
+```bash
+pip install -r requirements.txt -r requirements-dev.txt
+```
+
+Start the FastAPI development server:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Available endpoints:
+
+- `GET /` — confirms that the SecureForge API is running
+- `GET /health` — returns the service health status
+- `GET /docs` — opens the interactive Swagger API documentation
+
+## Running Tests
+
+Run the automated test suite:
+
+```bash
+python -m pytest -v
+```
+
+## Current Progress
+
+- Day 1: Initialized the repository and project structure
+- Day 2: Built the FastAPI foundation, health endpoint, and automated tests
