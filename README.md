@@ -160,9 +160,47 @@ python -m pytest -v
 SecureForge includes an intentionally insecure authentication endpoint for authorized security testing.
 
 - `GET /demo-login`
-- Uses fake hardcoded demonstration credentials
+- Uses environment variables for demonstration credentials
 - Returns `200 OK` for valid credentials
 - Returns `401 Unauthorized` for invalid credentials
-- Will be scanned and remediated in a future security-pipeline phase
+- Returns `503 Service Unavailable` when credentials are not configured
 
-> Warning: This endpoint is deliberately insecure and must never be used in a production environment.
+> Note: This endpoint is for controlled demonstrations only. Credentials must be supplied through environment variables and never committed.
+
+
+## Static Security Scanning
+
+SecureForge uses Bandit to scan Python source code for common security weaknesses.
+
+Run the scan locally:
+
+    ./scripts/run_bandit.sh
+
+The scan generates a JSON report at:
+
+    reports/bandit-report.json
+
+Bandit previously detected the intentionally hardcoded demonstration password as a B105 finding. The credential was remediated by moving it to environment-based configuration, and the scan now passes with zero findings.
+
+## Security CI Pipeline
+
+GitHub Actions automatically performs the following checks on pushes and pull requests targeting `main`:
+
+1. Installs production and development dependencies
+2. Runs the automated pytest suite
+3. Runs the Bandit static security scan
+4. Fails the workflow when a security finding is detected
+
+The pipeline now passes after remediating the hardcoded credential.
+
+
+## Environment Configuration
+
+SecureForge reads demonstration credentials from environment variables rather than storing them in source code.
+
+Set local demonstration values before starting the application:
+
+    export DEMO_USERNAME=secureforge-demo-user
+    export DEMO_PASSWORD=choose-a-local-demo-password
+
+The `.env.example` file contains public placeholders only. Real credentials and local `.env` files must never be committed.
