@@ -219,3 +219,18 @@ The scan generates a JSON report at:
     reports/pip-audit-report.json
 
 The GitHub Actions security pipeline runs this check automatically and blocks the build when a known vulnerable dependency is detected.
+
+
+## Secret Detection
+
+SecureForge uses Gitleaks to scan Git history and repository content for exposed credentials, API keys, tokens, passwords, and other sensitive information.
+
+Run the scan locally:
+
+    ./scripts/run_gitleaks.sh
+
+The scan generates a redacted JSON report at:
+
+    reports/gitleaks-report.json
+
+The GitHub Actions security pipeline automatically runs secret detection on pushes and pull requests targeting `main`. The workflow fails when a potential secret is detected.

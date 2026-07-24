@@ -6,6 +6,11 @@ All significant changes to SecureForge will be documented in this file.
 
 ### Added
 
+- Added Gitleaks secret detection for repository content and Git history
+- Added a reusable redacted secret-scanning script
+- Integrated secret detection into GitHub Actions
+- Added CI blocking when potential credentials or tokens are detected
+
 - Added `pip-audit` dependency vulnerability scanning
 - Added reusable dependency-audit script with JSON reporting
 - Integrated dependency scanning into GitHub Actions
