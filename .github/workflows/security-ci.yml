@@ -39,3 +39,6 @@ jobs:
 
       - name: Run dependency vulnerability scan
         run: ./scripts/run_pip_audit.sh
+
+      - name: Run secret detection scan
+        run: ./scripts/run_gitleaks.sh
